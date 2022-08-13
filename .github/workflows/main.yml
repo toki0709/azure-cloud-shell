@@ -21,15 +21,20 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-      - name: Set up python 3.10
+      - name: Set up python 3.10.2
         uses: actions/setup-python@v3
+        with:
+          python-version: 3.10.2
       
       # Runs a single command using the runners shell
-      - name: Run make file command
-        run: make hello
+      - name: install requirement package
+        run: |
+          make install
       - name: Lint with Pylint
-        run: make lint
+        run: |
+          make lint
       - name: Test with Pytest
-        run: make test
+        run: |
+          make test
       
 
